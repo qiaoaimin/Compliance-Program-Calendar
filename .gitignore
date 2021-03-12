@@ -1,4 +1,5 @@
 .vscode
 Pipfile
 Pipfile.lock
-/website/__pycache/
+website/__pycache__
+database.db
