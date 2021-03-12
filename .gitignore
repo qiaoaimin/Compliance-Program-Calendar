@@ -2,4 +2,4 @@
 Pipfile
 Pipfile.lock
 website/__pycache__
-database.db
+website/database.db
