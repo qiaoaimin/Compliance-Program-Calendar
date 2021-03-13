@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block title %}Program Management{% endblock %}
+{% block content %}
+<h1 align="center" class="display-4">Edit Program</h1>
+<ul class="list-group list-group flush" id="programs">
+    {% if programs %}
+    {% for program in programs%}
+    <li class="list-group-item">
+        {{program.hold_date}}{{program.title}}
+        <button type="button" class="btn btn-info">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+    </li>
+    {% endfor %}
+    {% else %}
+    <p class="text-info" align="center">There is no program, do you want to add now?</p>
+    {% endif %}
+</ul>
+
+{% endblock %}

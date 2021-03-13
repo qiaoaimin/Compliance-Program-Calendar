@@ -14,7 +14,8 @@ class User(db.Model):
 
 class Program(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(1000))
+    title = db.Column(db.String(200))
+    content = db.Column(db.String(1000))
     frequency = db.Column(db.Integer)
     participants_No = db.Column(db.Integer)
     participants_group = db.Column(db.String(150))
@@ -22,9 +23,10 @@ class Program(db.Model):
     status = db.Column(db.String(50))
     hold_date = db.Column(db.DateTime())
     created_data = db.Column(db.DateTime(timezone=True), default=func.now())
+    created_by = db.Column(db.String(50), db.ForeignKey('user.id'))
 
 
 class Attendee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    attendee_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     program_id = db.Column(db.Integer, db.ForeignKey('program.id'))

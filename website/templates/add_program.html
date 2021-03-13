@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} Add Program {% endblock %}
+{% block content %}
+<form method="POST">
+    <h3 align="center">Add Program</h3>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" />
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" name="content" id="content" placeholder="Enter content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="hold_date">Hold Date</label>
+        <input type="date" class="form-control" name="hold_date" id="hold_date" placeholder="Enter hold date" />
+    </div>
+    <div class="form-group">
+        <label for="frequency">Frequency Select</label>
+        <select class="form-control" name="frequency" id="frequency">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="participants_No">Participants Number</label>
+        <input type="number" class="form-control" name="participants_No" id="participants_No" min="10" max="200"
+            step="10" value="100" />
+    </div>
+    <div class="form-group">
+        <label for="participants_group">Participants Group</label>
+        <input type="text" class="form-control" name="participants_group" id="participants_group"
+            placeholder="Enter participants group name" />
+    </div>
+    <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="number" class="form-control" name="duration" id="duration" min="60" max="600" step="60"
+            value="120" />
+    </div>
+    <div class="form-group">
+        <label for="status">Program Status</label>
+        <select class="form-control" name="status" id="status">
+            <option>TBD</option>
+            <option>On-Going</option>
+            <option>Done</option>
+        </select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Add Program</button>
+</form>
+{% endblock %}

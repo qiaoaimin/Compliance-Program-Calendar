@@ -38,4 +38,28 @@ def sign_up():
             flash('Account created.', category='success')
             return redirect(url_for('views.home'))
 
-        return render_template('sign_up.html')
+    return render_template('sign_up.html')
+
+
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Login Success', category='success')
+                return redirect(url_for('views.home'))
+            else:
+                flash('Wrong password, please try again!', category='error')
+                return render_template('login.html')
+        else:
+            flash(
+                'You are not an available user, please check your email address or sign up first.',
+                category='error')
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
