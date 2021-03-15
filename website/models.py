@@ -1,8 +1,9 @@
 from .exts import db
 from sqlalchemy.sql import func
+from flask_login import UserMixin
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(150))
@@ -21,7 +22,7 @@ class Program(db.Model):
     participants_group = db.Column(db.String(150))
     duration = db.Column(db.Integer)
     status = db.Column(db.String(50))
-    hold_date = db.Column(db.DateTime())
+    hold_date = db.Column(db.Date())
     created_data = db.Column(db.DateTime(timezone=True), default=func.now())
     created_by = db.Column(db.String(50), db.ForeignKey('user.id'))
 

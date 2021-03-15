@@ -2,11 +2,13 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .exts import db
 from .models import User, Program
+from datetime import date, datetime
 
 views = Blueprint('views', __name__)
 
 
 @views.route('/', methods=['GET', 'POST'])
+@login_required
 def home():
     return render_template("home.html")
 
@@ -46,7 +48,8 @@ def add_program():
         # else:
         new_program = Program(title=title,
                               content=content,
-                              hold_date=hold_date,
+                              hold_date=datetime.strptime(
+                                  hold_date, '%Y-%m-%d'),
                               frequency=frequency,
                               participants_No=participants_No,
                               participants_group=participants_group,
